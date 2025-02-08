@@ -13,7 +13,13 @@ export default function UserCard({ avatarName, avatarRole, navigation }) {
   return (
     <TouchableHighlight
       underlayColor="wheat"
-      onPress={() => navigation.navigate("Profile", { avatarName, avatarRole })}
+      onPress={() => {
+        console.log("name is ", avatarName, avatarRole);
+        navigation.navigate("Profile", {
+          username: avatarName,
+          role: avatarRole,
+        });
+      }}
       style={styles.userContainer}
     >
       <View style={styles.userCard}>
