@@ -1,15 +1,29 @@
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableHighlight,
+  Alert,
+} from "react-native";
 import { Avatar } from "../assets/images";
-export default function UserCard({ avatarName, avatarRole }) {
+
+export default function UserCard({ avatarName, avatarRole, navigation }) {
   return (
-    <View style={styles.userCard}>
-      <Image style={{ width: 100, height: 100 }} source={Avatar} />
-      <View style={styles.container}>
-        <Text style={styles.userName}>{avatarName}</Text>
-        <Text style={styles.userRole}>{avatarRole}</Text>
+    <TouchableHighlight
+      underlayColor="wheat"
+      onPress={() => navigation.navigate("Profile", { avatarName, avatarRole })}
+      style={styles.userContainer}
+    >
+      <View style={styles.userCard}>
+        <Image style={{ width: 100, height: 100 }} source={Avatar} />
+        <View style={styles.container}>
+          <Text style={styles.userName}>{avatarName}</Text>
+          <Text style={styles.userRole}>{avatarRole}</Text>
+        </View>
       </View>
-    </View>
+    </TouchableHighlight>
   );
 }
 
@@ -18,17 +32,11 @@ const styles = StyleSheet.create({
     display: "flex",
     gap: 30,
   },
-  userCard: {
-    gap: 30,
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "flex-start",
-    alignItems: "center",
-    backgroundColor: "#fff",
+  userContainer: {
+    marginBottom: 30,
     width: "90%",
     height: 160,
     alignSelf: "center",
-    top: 40,
     borderRadius: 10,
     padding: 10,
     shadowColor: "#000",
@@ -36,7 +44,18 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     shadowOpacity: 1,
     elevation: 8,
-    marginBottom: 30,
+    backgroundColor: "#fff",
+  },
+  userCard: {
+    gap: 30,
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    borderRadius: 40,
+    alignSelf: "center",
   },
 
   userName: {

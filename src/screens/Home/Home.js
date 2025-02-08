@@ -1,9 +1,18 @@
 import React from "react";
 import styles from "./styles";
 import users from "../../components/users";
-import { SafeAreaView, Text, View, ScrollView } from "react-native";
+import {
+  SafeAreaView,
+  Text,
+  View,
+  ScrollView,
+  TouchableHighlight,
+  Alert,
+  Touchable,
+} from "react-native";
 import UserCard from "../../components/UserCard";
-export default function Home() {
+
+export default function Home({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -13,6 +22,7 @@ export default function Home() {
         {users.map((user, key) => {
           return (
             <UserCard
+              navigation={navigation}
               key={key}
               avatarName={user.username}
               avatarRole={user.role}
