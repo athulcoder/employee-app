@@ -14,7 +14,6 @@ export default function UserCard({ avatarName, avatarRole, navigation }) {
     <TouchableHighlight
       underlayColor="wheat"
       onPress={() => {
-        console.log("name is ", avatarName, avatarRole);
         navigation.navigate("Profile", {
           username: avatarName,
           role: avatarRole,
